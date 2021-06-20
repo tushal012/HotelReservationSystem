@@ -29,5 +29,12 @@ public class HotelReservation {
         return hotelList.get(index).getName();
     }
 
+    /* added weekday and weekend rates for every hotel.*/
+    public boolean addHotelRates(String hotelName, double weekday, double weekend ) {
+        Hotel hotel = new Hotel(hotelName, weekday);
+        hotelList.add(hotel);
+        return !hotelList.isEmpty();
+    }
+
 
 }
