@@ -16,4 +16,11 @@ public class Hotel {
                 ", rates=" + rates +
                 '}';
     }
+    public Double getRates() {
+        return rates;
+    }
+
+    public String getName() {
+        return hotelName;
+    }
 }
