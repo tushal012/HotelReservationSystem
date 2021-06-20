@@ -37,18 +37,6 @@ public class HotelReservation {
         return !hotelList.isEmpty();
     }
 
-    // Method to calculate total rates of hotels  for given days
-    public static Map<Integer, ArrayList<Hotel>> createRentMap(String fromDate, String toDate, HashMap<Object, Object> hotelMap) {
-        Map<Integer, ArrayList<Hotel>> rentMap = new HashMap<>();
-        int days[] = numberOfDays(fromDate, toDate);
-        for (Map.Entry<Object, Object> entry : hotelMap.entrySet()) {
-            int weekdayRent = entry.getValue().getWeekdayRate() * days[0];
-            int weekendRent = entry.getValue().getWeekendRate() * days[1];
-            int totalRent = weekdayRent + weekendRent;
-            rentMap.computeIfAbsent(totalRent, k -> new ArrayList<>()).add((Hotel) entry.getValue());
-        }
-        return rentMap;
-    }
 
     // method to calculate number fo days for given dates
     public static int[] numberOfDays(String fromDate, String toDate) {
@@ -79,12 +67,12 @@ public class HotelReservation {
         return days;
     }
 
-
-    public boolean addHotel(String lakewood, int i, int i1) {
-        return true;
+    /*  added rating for each hotel.*/
+    public boolean addHotelRating(String hotelName, int rating ) {
+        Hotel hotel = new Hotel(hotelName, (double) rating);
+        hotelList.add(hotel);
+        return !hotelList.isEmpty();
     }
 
-    public boolean findCheapestHotel(String s, String s1) {
-       return true;
-    }
+
 }

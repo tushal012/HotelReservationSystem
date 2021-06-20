@@ -4,19 +4,20 @@ public class Hotel {
     private final String hotelName;
     private final double rates;
     private final Double weekendRates;
-    private int WeekendRate;
-    private int WeekdayRate;
+    private  final  int rating;
 
     public Hotel(String hotelName, double rates) {
         this.hotelName = hotelName;
         this.rates = rates;
         weekendRates = null;
+        rating = 0;
     }
 
-    public Hotel(String hotelName, Double rates, Double weekendRates) {
+    public Hotel(String hotelName, Double rates, Double weekendRates, int rating) {
         this.hotelName = hotelName;
         this.rates = rates;
         this.weekendRates = weekendRates;
+        this.rating = rating;
     }
 
     @Override
@@ -34,19 +35,7 @@ public class Hotel {
         return hotelName;
     }
 
-
-
-    public int getWeekdayRate() {
-        return WeekdayRate;
-    }
-    public void setWeekdayRate(int regWeekdayRate) {
-        this.WeekdayRate = regWeekdayRate;
-    }
-    // getter and setter method for regular weekend days
-    public int getWeekendRate() {
-        return WeekendRate;
-    }
-    public void setWeekendRate(int regWeekendRate) {
-        this.WeekendRate = regWeekendRate;
+    public Double getWeekendRates() {
+        return weekendRates;
     }
 }

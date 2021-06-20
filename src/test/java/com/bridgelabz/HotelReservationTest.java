@@ -47,7 +47,7 @@ public class HotelReservationTest {
                 Assert.assertTrue(result);
     }
 
-    @Test
+   /* @Test
     public void whenNewHotelAddedWithWeekend_shouldReturnTrue() {
         Assert.assertTrue(hotelReservation.addHotel("Lakewood", 110, 90));
         Assert.assertTrue(hotelReservation.addHotel("Bridgewood", 150, 50));
@@ -59,5 +59,13 @@ public class HotelReservationTest {
         Assert.assertTrue(hotelReservation.addHotel("Bridgewood", 150, 50));
         Assert.assertTrue(hotelReservation.addHotel("Ridgewood", 220, 150));
         Assert.assertTrue(hotelReservation.findCheapestHotel("11Sep2020", "12Sep2020"));
+    }*/
+
+    @Test
+    public void givenRatingForHotels_WhenAddedShouldReturnTrue() {
+        boolean result = hotelReservation.addHotelRating("Lakewood",3) &&
+                hotelReservation.addHotelRating("Bridgewood", 4) &&
+                hotelReservation.addHotelRating("Ridgewood", 5);
+                Assert.assertTrue(result);
     }
 }
