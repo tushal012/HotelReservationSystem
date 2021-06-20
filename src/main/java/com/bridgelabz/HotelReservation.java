@@ -1,9 +1,10 @@
 package com.bridgelabz;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoField;
+import java.util.*;
 
 public class HotelReservation {
     List<Hotel> hotelList = new ArrayList<>();
@@ -36,5 +37,54 @@ public class HotelReservation {
         return !hotelList.isEmpty();
     }
 
+    // Method to calculate total rates of hotels  for given days
+    public static Map<Integer, ArrayList<Hotel>> createRentMap(String fromDate, String toDate, HashMap<Object, Object> hotelMap) {
+        Map<Integer, ArrayList<Hotel>> rentMap = new HashMap<>();
+        int days[] = numberOfDays(fromDate, toDate);
+        for (Map.Entry<Object, Object> entry : hotelMap.entrySet()) {
+            int weekdayRent = entry.getValue().getWeekdayRate() * days[0];
+            int weekendRent = entry.getValue().getWeekendRate() * days[1];
+            int totalRent = weekdayRent + weekendRent;
+            rentMap.computeIfAbsent(totalRent, k -> new ArrayList<>()).add((Hotel) entry.getValue());
+        }
+        return rentMap;
+    }
 
+    // method to calculate number fo days for given dates
+    public static int[] numberOfDays(String fromDate, String toDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMMyyyy");
+        LocalDate from = LocalDate.parse(fromDate, formatter); // convert String to LocalDate
+        LocalDate to = LocalDate.parse(toDate, formatter);
+        int numWeekdays = 0;
+        int numWeekendDays = 0;
+        int days[];
+        days = new int[2];
+        for (LocalDate date = from; date.isBefore(to.plusDays(1)); date = date.plusDays(1)) {
+            DayOfWeek day = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
+            switch (day) {
+                case SATURDAY:
+                    numWeekendDays++;
+                    break;
+
+                case SUNDAY:
+                    numWeekendDays++;
+                    break;
+
+                default:
+                    numWeekdays++;
+            }
+        }
+        days[0] = numWeekdays;
+        days[1] = numWeekendDays;
+        return days;
+    }
+
+
+    public boolean addHotel(String lakewood, int i, int i1) {
+        return true;
+    }
+
+    public boolean findCheapestHotel(String s, String s1) {
+       return true;
+    }
 }

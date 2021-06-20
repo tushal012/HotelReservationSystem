@@ -4,6 +4,8 @@ public class Hotel {
     private final String hotelName;
     private final double rates;
     private final Double weekendRates;
+    private int WeekendRate;
+    private int WeekdayRate;
 
     public Hotel(String hotelName, double rates) {
         this.hotelName = hotelName;
@@ -32,7 +34,19 @@ public class Hotel {
         return hotelName;
     }
 
-    public Double getWeekendRates() {
-        return weekendRates;
+
+
+    public int getWeekdayRate() {
+        return WeekdayRate;
+    }
+    public void setWeekdayRate(int regWeekdayRate) {
+        this.WeekdayRate = regWeekdayRate;
+    }
+    // getter and setter method for regular weekend days
+    public int getWeekendRate() {
+        return WeekendRate;
+    }
+    public void setWeekendRate(int regWeekendRate) {
+        this.WeekendRate = regWeekendRate;
     }
 }

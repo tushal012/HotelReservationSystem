@@ -46,4 +46,18 @@ public class HotelReservationTest {
                 hotelReservation.addHotelRates("Ridgewood", 220.00, 150.00);
                 Assert.assertTrue(result);
     }
+
+    @Test
+    public void whenNewHotelAddedWithWeekend_shouldReturnTrue() {
+        Assert.assertTrue(hotelReservation.addHotel("Lakewood", 110, 90));
+        Assert.assertTrue(hotelReservation.addHotel("Bridgewood", 150, 50));
+        Assert.assertTrue(hotelReservation.addHotel("Ridgewood", 220, 150));
+    }
+    @Test
+    public void givenHotelNamesAndRates_findCheapestHotelAndReturnNameOfHotelWithRent() {
+        Assert.assertTrue(hotelReservation.addHotel("Lakewood", 110, 90));
+        Assert.assertTrue(hotelReservation.addHotel("Bridgewood", 150, 50));
+        Assert.assertTrue(hotelReservation.addHotel("Ridgewood", 220, 150));
+        Assert.assertTrue(hotelReservation.findCheapestHotel("11Sep2020", "12Sep2020"));
+    }
 }
